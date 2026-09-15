@@ -3,6 +3,7 @@
 <!-- PROJECT SHIELDS -->
 [![Issues][issues-shield]][issues-url]
 [![Last Commit][commit-shield]][commit-url]
+[![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -209,7 +210,7 @@ Suggestions and fixes are welcome.
 <!-- LICENSE -->
 ## License
 
-No license has been chosen yet, so all rights are reserved by default.
+Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -237,6 +238,8 @@ Project Link: [https://github.com/nicholas-fierro/parlay-party](https://github.c
 [issues-url]: https://github.com/nicholas-fierro/parlay-party/issues
 [commit-shield]: https://img.shields.io/github/last-commit/nicholas-fierro/parlay-party.svg?style=for-the-badge
 [commit-url]: https://github.com/nicholas-fierro/parlay-party/commits
+[license-shield]: https://img.shields.io/github/license/nicholas-fierro/parlay-party.svg?style=for-the-badge
+[license-url]: https://github.com/nicholas-fierro/parlay-party/blob/main/LICENSE
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
