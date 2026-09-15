@@ -89,7 +89,7 @@ House rules are enforced as picks are added: no duplicate legs, no opposite side
 <!-- GETTING STARTED -->
 ## Getting Started
 
-The app runs fully offline on mock fixtures. Add a SportsGameOdds key to switch to live odds.
+Parlay Party pulls live NFL odds from SportsGameOdds. Without a key it starts on a built-in sample slate, so every screen works on first run.
 
 ### Prerequisites
 
@@ -125,9 +125,9 @@ The app runs fully offline on mock fixtures. Add a SportsGameOdds key to switch 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. **Sign in** with the mock Google chooser or any email from the list and any 6-digit code, then confirm you're of legal age.
-2. **Create a room** and set picks per person, max members, prop types, and games. The screen warns when the maximum slip size exceeds a book's leg limit. Or tap **Create demo room with friends** for a room with picks already in it.
-3. **Share the 6-character code.** To simulate friends, open a second tab or private window and sign in as someone else; rooms, picks, and presence sync live across tabs.
+1. **Sign in** with Google or an emailed one-time code, then confirm you're of legal age.
+2. **Create a room** and set picks per person, max members, prop types, and games. The screen warns when the maximum slip size exceeds a book's leg limit. To see a full slip right away, tap **Create demo room with friends**.
+3. **Invite your group** with the 6-character code or invite link. Picks, presence, and the activity feed update live for everyone in the room.
 4. **Add picks.** Search a player, choose a stat, and pick Over/Under (or Yes for Anytime TD) while comparing every book's line and odds.
 5. **Lock** (host only). Odds refresh and the prices are frozen for the slip.
 6. **Send.** Pick the top-ranked book or any other, then open each leg on that book or copy/share the slip.
@@ -141,7 +141,7 @@ The free SportsGameOdds tier allows 2,500 objects per month, where one object is
 | Cache | 30 minutes, in memory and in `web/.sgo-cache/` |
 | Lock refresh | Forced refresh, at most once every 2 minutes |
 | Budget stop | Fetching stops at 2,400 objects; cached odds are served with a warning |
-| No key | Mock slate with the same shape |
+| No key | Built-in sample slate with the same data shape |
 
 Probe what your key returns (uses about one object):
 
@@ -161,31 +161,29 @@ parlay-party/
     └── src/
         ├── app/
         │   ├── api/slate/  Server route: SGO fetch, cache, budget guard
-        │   ├── login/      Mock Google + email code sign-in
+        │   ├── login/      Google and email code sign-in
         │   ├── rooms/new/  Room settings
         │   └── r/[code]/   Room and send pages
         ├── components/     LegCard, AddPickSheet, UI primitives
         └── lib/
-            ├── odds/       SGO normalizer, fetcher, mock slate
+            ├── odds/       SGO normalizer, fetcher, sample slate
             ├── books.ts    Sportsbooks, stat mapping, odds math
             ├── rules.ts    Pick validation, lock rules, ranking, deeplinks
-            └── store.ts    Mock realtime backend (localStorage + BroadcastChannel)
+            └── store.ts    Realtime room state: rooms, picks, presence, activity
 ```
-
-A `pb/` directory for the PocketBase backend (auth, rooms, realtime) will sit beside `web/`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Mobile-first room UI with mock realtime sync
+- [x] Mobile-first rooms with live picks, presence, and activity
 - [x] Live NFL player props from SportsGameOdds with caching and budget guard
 - [x] Books ranked by combined payout with fair-line flags
 - [x] Per-leg betslip deeplinks and copy/share
 - [ ] Verify multi-leg betslip links fill the slip on each book
 - [ ] Verify per-book parlay leg limits
-- [ ] PocketBase backend: Google + email OTP auth, rooms, realtime
+- [ ] PocketBase backend for hosted accounts and room history
 - [ ] Deploy web to Vercel and PocketBase to a VM
 - [ ] Grade legs after games and add a leaderboard
 - [ ] Pick'em apps (PrizePicks, Underdog, Sleeper) and prediction markets (Kalshi, Polymarket)
